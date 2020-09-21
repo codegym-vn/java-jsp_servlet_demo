@@ -1,11 +1,11 @@
-package entities;
-public class Student {
+package model.entities;
+public class User {
     String rollno, fullname, email, birthday, address;
 
-    public Student() {
+    public User() {
     }
 
-    public Student(String rollno, String fullname, String email, String birthday, String address) {
+    public User(String rollno, String fullname, String email, String birthday, String address) {
         this.rollno = rollno;
         this.fullname = fullname;
         this.email = email;
