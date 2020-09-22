@@ -7,4 +7,6 @@ import java.util.List;
 public interface IProductService {
     List<Product> getAll();
     boolean delete(int id);
+    boolean create(Product p);
+    boolean updateUser(Product p);
 }

@@ -18,13 +18,23 @@ public class ProductController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        if (action.equals("create")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            float price = Float.parseFloat(request.getParameter("price"));
+            int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+            Product p = new Product(id,name,price,categoryId);
+           boolean isAdded = productService.create(p);
+           if(isAdded){
+               response.sendRedirect("/productController");
+           }
+        } else if (action.equals("edit")) {
 
-        if (action == "add") {
+        } else if (action.equals("search")) {
 
-        } else if (action == "delete") {
-            String id = request.getParameter("id");
-            productService.delete(Integer.parseInt(id));
         }
+        RequestDispatcher dispatcher;
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +45,13 @@ public class ProductController extends HttpServlet {
 
         } else if (action.equals("delete")) {
             String id = request.getParameter("id");
-            productService.delete(Integer.parseInt(id));
+            boolean isDeleted = productService.delete(Integer.parseInt(id));
+            if (isDeleted) {
+                response.sendRedirect("productController");
+            }
+        } else if (action.equals("update")) {
+            dispatcher = getServletContext().getRequestDispatcher("/views/product/update.jsp");
+            dispatcher.forward(request, response);
         } else {
             List<Product> products = productService.getAll();
             request.setAttribute("products", products);

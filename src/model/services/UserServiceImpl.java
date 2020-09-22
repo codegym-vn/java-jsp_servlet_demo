@@ -30,34 +30,4 @@ public class UserServiceImpl implements IUserService {
        }
         return isLogined;
     }
-    @Override
-    public List<User> findAll() {
-        ArrayList<User> studentList = new ArrayList<>();
-        studentList.add(new User("R001", "A", "a@gmail.com", "1999-01-01", "Ha Noi"));
-        studentList.add(new User("R002", "A", "a@gmail.com", "1999-01-01", "Ha Noi"));
-        studentList.add(new User("R003", "A", "a@gmail.com", "1999-01-01", "Ha Noi"));
-        studentList.add(new User("R004", "A", "a@gmail.com", "1999-01-01", "Ha Noi"));
-        studentList.add(new User("R005", "A", "a@gmail.com", "1999-01-01", "Ha Noi"));
-        return studentList;
-    }
-
-    @Override
-    public void save(User customer) {
-
-    }
-
-    @Override
-    public User findById(int id) {
-        return null;
-    }
-
-    @Override
-    public void update(int id, User customer) {
-
-    }
-
-    @Override
-    public void remove(int id) {
-
-    }
 }
